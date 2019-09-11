@@ -81,8 +81,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="C6.html" />
     
-    <link rel="prev" href="C4.html" />
+    
+    <link rel="prev" href="C3.html" />
     
 
     </head>
@@ -177,12 +179,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.4" data-path="C4.html">
+        <li class="chapter active" data-level="1.2.4" data-path="C5.html">
             
-                <a href="C4.html">
+                <a href="C5.html">
             
                     
-                    Functions and program structure
+                    Pointers and arrays
             
                 </a>
             
@@ -190,12 +192,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2.5" data-path="C5.html">
+        <li class="chapter " data-level="1.2.5" data-path="C6.html">
             
-                <a href="C5.html">
+                <a href="C6.html">
             
                     
-                    Pointers and arrays
+                    Strings
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="C4.html">
+            
+                <a href="C4.html">
+            
+                    
+                    Functions and program structure
             
                 </a>
             
@@ -256,11 +271,91 @@
                                 <html><head></head><body><h1 id="pointers-and-arrays">Pointers and arrays</h1>
 <blockquote>
 <ul>
+<li>Pointers</li>
 <li>Arrays</li>
 <li>Multidimensional Arrays</li>
-<li>Pointers</li>
+<li>Pointers and array</li>
 </ul>
 </blockquote>
+<h3 id="pointer">Pointer</h3>
+<ol>
+<li>Addresses in Memory<ul>
+<li>The address of the variable is stored in the memory.</li>
+<li>We would use the address operator, an ampersand <code>&amp;</code>, to return its address.</li>
+<li>The format specifier for address is <code>%p</code>.</li>
+</ul>
+</li>
+<li>Number Systems</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Common Name</th>
+<th style="text-align:center">Base</th>
+<th style="text-align:center">Digits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">binary</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">01</td>
+</tr>
+<tr>
+<td style="text-align:center">octal</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">01234567</td>
+</tr>
+<tr>
+<td style="text-align:center">decimal</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">0123456789</td>
+</tr>
+<tr>
+<td style="text-align:center">hexadecimal</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">0123456789ABCDEF</td>
+</tr>
+</tbody>
+</table>
+<p>3.Pointers</p>
+<ul>
+<li>A pointer is a variable whose contents are the
+address of another variable.
+Let&apos;s say that the integer is <code>int number = 3;</code> the content of <code>number</code> is 3
+and the address of number is <code>&amp;number</code>. We would create a pointer
+<code>int *numberPtr;</code> and copy the address of number to the pointer <code>numberPtr = &amp;number</code>. The content of <code>numberPtr</code> is
+the address of <code>number</code>.</li>
+<li>We would use the dereference operator,
+an asterisk <code>*</code>, to modify its locations in memory.
+Let&apos;s say that the integer is <code>int number = 3;</code> and
+the pointer is <code>int* numberPtr;</code>. We would copy the address of
+the number to the pointer <code>numberPtr = &amp;number</code>. The content of number
+is <code>number</code>, which is 3. The content of number using pointer is <code>*numberPtr</code>, which is 3.
+We would change waht the pointer points to <code>*numberPtr = 6</code>.
+The content of number will be 6.</li>
+<li>Pointer <code>numberPtr</code> has its own type, a type of
+<code>int*</code> or pointer-to-int.</li>
+<li>We would increment the address in the pointer <code>numberPtr++</code>.</li>
+<li>Pointers to pointers<ul>
+<li>Pointers can contain the address of another pointer.
+<code>int number = 5;</code>, <code>int* numberPtr = &amp;number</code>, <code>int** Ptr2 = &amp;numberPtr;</code>.</li>
+</ul>
+</li>
+<li>We would compare the addresses stored in
+pointers <code>if(numberPtr1 == numberPtr2)</code>.</li>
+<li>We would compare the values of the variables that
+pointers point to <code>if(*numberPtr1 == *numberPtr2)</code>.</li>
+<li>We would initialize the pointer to <code>NULL</code>, <code>int *numberPtr;</code>, <code>numberPtr = NULL</code>.</li>
+</ul>
+<p>4.Pointers and Functions</p>
+<p>Pointers allow us to use a process called <em>pass</em> by <em>reference</em>,
+in which we will be able to change the value of the original variable.
+We do this by passing the variable&#x2019;s address to the function.</p>
+<p>5.Arrays of Pointers</p>
+<p>A pointer is a variable type and we can
+have an array of pointers just as we have had arrays of other variable types.</p>
+<p><br></p>
 <h3 id="array">Array</h3>
 <ol>
 <li>Array is a variable that can hold more than one value.</li>
@@ -271,14 +366,7 @@
 </ol>
 </li>
 <li>The first element of the array is <code>a[0]</code>, the second element is <code>a[1]</code>, etc.
-<a href="images/array.png" data-lightbox="72dd2241-4a5d-46da-8e5a-ba00af9f8ad9" data-title="array"><img src="images/array.png" alt="array" style="zoom:20%;"></a></li>
-<li>Let&apos;s say that <code>aptr</code> is the pointer to the integer <code>a[0]</code>, declared as <code>int *aptr;</code>.<ol>
-<li><code>aptr = &amp;a[0]</code> is the address of <code>a[0]</code>.</li>
-<li><code>*aptr</code> is the contents of <code>a[0]</code>.</li>
-<li><code>aptr + i</code> is the address of <code>a[i]</code>.</li>
-<li><code>*(aptr + i)</code> is the contents of <code>a[i]</code>.</li>
-</ol>
-</li>
+<a href="images/array.png" data-lightbox="944a685b-fcf0-45a4-b9e3-f73cb303e0dc" data-title="array"><img src="images/array.png" alt="array" style="zoom:20%;"></a></li>
 </ol>
 <p><br></p>
 <blockquote>
@@ -315,6 +403,76 @@
 <br>
 When declaring a 2D array, the number of columns is required.</p>
 </blockquote>
+<p><br></p>
+<h3 id="pointers-and-array">Pointers and array</h3>
+<p>Pointers and arrays are closely linked in C.</p>
+<ol>
+<li>The array name <code>num</code> is the address of the first element,
+and <code>*num</code> is the content of the first element.</li>
+</ol>
+<pre class="language-"><code class="lang-c"><span class="token comment">/*array name evaluates to the address of
+ * the first element in the array*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> num<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The address of num[0] is %p\n&quot;</span><span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The content of num[0] is %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Let&apos;s say that <code>firstPtr</code> is the pointer to the integer <code>num[0]</code>, declared as <code>int* firstPtr;</code>.</p>
+<ol>
+<li><code>firstPtr = &amp;num[0]</code> is the address of <code>num[0]</code>.</li>
+<li><code>*firstPtr</code> is the contents of <code>num[0]</code>.</li>
+</ol>
+<pre class="language-"><code class="lang-c"><span class="token comment">/*array name evaluates to the address of
+ * the first element in the array*/</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> num<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> numPtr <span class="token operator">=</span> num<span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> firstPtr <span class="token operator">=</span> <span class="token operator">&amp;</span>num<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The address of num[0] using numPtr is %p\n&quot;</span><span class="token punctuation">,</span> numPtr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The content of num[0] using numPtr is %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>numPtr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The address of num[0] using firstPtr is %p\n&quot;</span><span class="token punctuation">,</span> firstPtr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The content of num[0] using firstPtr is %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>firstPtr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2.We would increment the address to move through the array.</p>
+<pre class="language-"><code class="lang-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> num<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The address of num[1] is %p\n&quot;</span><span class="token punctuation">,</span> num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The content of num[1] is %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Let&apos;s say that <code>firstPtr</code> is the pointer to the integer <code>num[0]</code>, declared as <code>int* firstPtr;</code>.</p>
+<ol>
+<li><code>firstPtr + i</code> is the address of <code>num[i]</code>.</li>
+<li><code>*(firstPtr + i)</code> is the contents of <code>num[i]</code>.</li>
+</ol>
+<pre class="language-"><code class="lang-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> num<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> numPtr <span class="token operator">=</span> num<span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> firstPtr <span class="token operator">=</span> <span class="token operator">&amp;</span>num<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The address of num[1] using numPtr is %p\n&quot;</span><span class="token punctuation">,</span> numPtr <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The content of num[1] using numPtr is %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>numPtr <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The address of num[1] using firstPtr is %p\n&quot;</span><span class="token punctuation">,</span> firstPtr <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The content of num[1] using firstPtr is %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>firstPtr <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 </body></html>
                                 
                                 </section>
@@ -342,10 +500,14 @@ When declaring a 2D array, the number of columns is required.</p>
 
             
                 
-                <a href="C4.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Functions and program structure">
+                <a href="C3.html" class="navigation navigation-prev " aria-label="Previous page: Conditionals and loops">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="C6.html" class="navigation navigation-next " aria-label="Next page: Strings">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -354,7 +516,7 @@ When declaring a 2D array, the number of columns is required.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Pointers and arrays","level":"1.2.5","depth":2,"previous":{"title":"Functions and program structure","level":"1.2.4","depth":2,"path":"C4.md","ref":"C4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","splitter","prism","-highlight","back-to-top-button","page-toc-button","-lunr","-search","search-plus","copy-code-button","alerts","lightbox"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"shell":"bash"}},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"alerts":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"C5.md","mtime":"2019-09-09T21:31:57.126Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-09T22:20:40.027Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Pointers and arrays","level":"1.2.4","depth":2,"next":{"title":"Strings","level":"1.2.5","depth":2,"path":"C6.md","ref":"C6.md","articles":[]},"previous":{"title":"Conditionals and loops","level":"1.2.3","depth":2,"path":"C3.md","ref":"C3.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","splitter","prism","-highlight","back-to-top-button","page-toc-button","-lunr","-search","search-plus","copy-code-button","alerts","lightbox"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"shell":"bash"}},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"lightbox":{"jquery":true},"page-toc-button":{},"back-to-top-button":{},"alerts":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"C5.md","mtime":"2019-09-11T16:04:57.719Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-09-11T16:07:48.607Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
