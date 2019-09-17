@@ -1,7 +1,11 @@
 # Summary
 
-* [Notation conventions](Notation convent introduction.md)
-    * [Time Complexity of for Loops](Time Complexity for Loops.md)
-    * [Sorting Algorithms and Binary Search](Sorting Algorithms and Binary Search.md)
+* [Basic C Language](Lecture1.md)
+    * [Overview of C](C1.md)
+    * [Overview constants, Data Types](C2.md)
+    * [Conditionals and loops](C3.md)
+    * [Pointers and arrays](C5.md)
+    * [Strings](C6.md)
+    * [Functions and program structure](C4.md)
 
 
