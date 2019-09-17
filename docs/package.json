@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/vpslinuxinstall/GitbookAlgorithm.git",
   "dependencies": {
-    "gitbook-plugin-toggle-chapters": "0.0.3"
+    "gitbook-plugin-toggle-chapters": "0.0.3",
+    "mathjax": "^3.0.0",
+    "mathjax-full": "^3.0.0"
   }
 }

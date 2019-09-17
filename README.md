@@ -1,5 +1,5 @@
-# CSE 1320
-[The C Programming Language by Brian Kernighan and Dennis Ritchie](https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628/ref=sr_1_2?keywords=C+Programming+Language%2C+2nd+Edition&qid=1567954596&s=gateway&sr=8-2)
+# CSE 2320 Algorithms and Data Structures
+[Introduction to Algorithms 3rd Edition](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_3?keywords=intro+algorithm+cormen&qid=1568254707&sr=8-3)
 
 
 

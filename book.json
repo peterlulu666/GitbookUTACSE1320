@@ -11,7 +11,9 @@
         "search-plus",
         "copy-code-button",
         "alerts",
-        "lightbox"
+        "lightbox",
+        "katex",
+        "mathjax-full"
     ],
     "pluginsConfig": {
   "prism": {
