@@ -428,8 +428,9 @@ Node <span class="token operator">*</span>head <span class="token operator">=</s
         <span class="token keyword">return</span><span class="token punctuation">;</span>
 
     <span class="token punctuation">}</span>
-    <span class="token comment">// Move the tmpPointer</span>
+    <span class="token comment">// Move the tmpPointer to the last node</span>
     <span class="token keyword">while</span> <span class="token punctuation">(</span>tmpPointer <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Move the tmpPointer to the dataInList</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>tmpPointer<span class="token operator">-&gt;</span>data <span class="token operator">==</span> dataInList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment">// Let the newNode.next point to the tmpPointer</span>
             newNode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> tmpPointer<span class="token punctuation">;</span>
@@ -444,6 +445,66 @@ Node <span class="token operator">*</span>head <span class="token operator">=</s
         <span class="token comment">// Move the prevNode and the tmpPointer</span>
         <span class="token comment">// let the prevNode point to the tmpPointer</span>
         prevNode <span class="token operator">=</span> tmpPointer<span class="token punctuation">;</span>
+        <span class="token comment">// Move the tmpPointer</span>
+        tmpPointer <span class="token operator">=</span> tmpPointer<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// If the data is not in the list</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;The data %d is not in the list.\n&quot;</span><span class="token punctuation">,</span> dataInList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">removeFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If the linked list is empty</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentSize <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Declare the removedData and store the head.data to the removedData</span>
+    <span class="token keyword">int</span> removedData <span class="token operator">=</span> head<span class="token operator">-&gt;</span>data<span class="token punctuation">;</span>
+    <span class="token comment">// Move the head pointer</span>
+    head <span class="token operator">=</span> head<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    <span class="token comment">// Decrement the currentSize</span>
+    currentSize<span class="token operator">--</span><span class="token punctuation">;</span>
+    <span class="token comment">// Return the removedData</span>
+    <span class="token keyword">return</span> removedData<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Remove node at data</span>
+<span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span><span class="token keyword">int</span> dataInList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If the linked list is empty</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>currentSize <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// If the dataInList is the first data</span>
+    <span class="token comment">// Call removeFirst</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>head<span class="token operator">-&gt;</span>data <span class="token operator">==</span> dataInList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">removeFirst</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Define a pointer type</span>
+    <span class="token keyword">typedef</span> Node <span class="token operator">*</span>Ptr<span class="token punctuation">;</span>
+    <span class="token comment">// Copy the head pointer and store the address to the tmpPointer</span>
+    Ptr tmpPointer <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token comment">// Move the tmpPointer to the second last node</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>tmpPointer<span class="token operator">-&gt;</span>next <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Move the dataInList to the previous node</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>tmpPointer<span class="token operator">-&gt;</span>next<span class="token operator">-&gt;</span>data <span class="token operator">==</span> dataInList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Let the tmpPointer.next point to the tmpPointer.next.next</span>
+            tmpPointer<span class="token operator">-&gt;</span>next <span class="token operator">=</span> tmpPointer<span class="token operator">-&gt;</span>next<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+            <span class="token comment">// Decrement the currentSize</span>
+            currentSize<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span>
+
         <span class="token comment">// Move the tmpPointer</span>
         tmpPointer <span class="token operator">=</span> tmpPointer<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
 
@@ -476,7 +537,10 @@ Node <span class="token operator">*</span>head <span class="token operator">=</s
     <span class="token function">insert</span><span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">insertNode</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">insertNode</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">delete</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">search</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -485,6 +549,43 @@ Node <span class="token operator">*</span>head <span class="token operator">=</s
 
 <span class="token punctuation">}</span>
 </code></pre>
+<h2 id="tutorial">Tutorial</h2>
+<p><a href="https://www.thelearningpoint.net/computer-science/data-structures-singly-linked-list-with-c-program-source-code" target="_blank">Singly Linked List</a></p>
+<p><a href="https://www.thelearningpoint.net/computer-science/data-structures-doubly-linked-list-with-c-program-source-code" target="_blank">Doubly Linked List</a>              </p>
+<p><a href="https://www.thelearningpoint.net/computer-science/data-structures-circular-linked-list--with-c-program-source-code" target="_blank">Circular Linked List</a>      </p>
+<p><a href="https://www.thelearningpoint.net/computer-science/data-structures-stacks--with-c-program-source-code" target="_blank">Stacks</a>        </p>
+<p><a href="https://www.thelearningpoint.net/computer-science/data-structures-queues--with-c-program-source-code" target="_blank">Queues</a>      </p>
+<h2 id="interview-questions">Interview Questions</h2>
+<p>Here are some questions from interviews for you to practice </p>
+<ol>
+<li>Write code to remove duplicates from an unsorted linked list. <ul>
+<li>FOLLOW UP<ul>
+<li>How would you solve this problem if a temporary buffer is not allowed? </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>You have two numbers represented by a linked list, where each node contains a single digit.The digits are stored in reverse order, such that the 1&#x2019;s digit is at the head of the list.Write a function that adds the two numbers and returns the sum as a linked list.         <ul>
+<li>EXAMPLE <ul>
+<li>Input: (3 -&gt; 1 -&gt; 5) + (5 -&gt; 9 -&gt; 2) </li>
+<li>Output: 8 -&gt; 0 -&gt; 8</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Given a circular linked list, implement an algorithm which returns node at the beginning of the loop.        <ul>
+<li>DEFINITION <ul>
+<li>Circular linked list: A (corrupt) linked list in which a node&#x2019;s next pointer points to an earlier node, so as to make a loop in the linked list. </li>
+</ul>
+</li>
+<li>EXAMPLE <ul>
+<li>input: A -&gt; B -&gt; C -&gt; D -&gt; E -&gt; C [the same C as earlier] </li>
+<li>output: C      </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -524,7 +625,7 @@ Node <span class="token operator">*</span>head <span class="token operator">=</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Linked List","level":"1.2.7","depth":2,"previous":{"title":"Functions and program structure","level":"1.2.6","depth":2,"path":"C4.md","ref":"C4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","splitter","prism","-highlight","back-to-top-button","page-toc-button","-lunr","-search","search-plus","copy-code-button","alerts","lightbox"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"shell":"bash"}},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"lightbox":{"jquery":true,"sameUuid":false},"page-toc-button":{},"back-to-top-button":{},"alerts":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"C7.md","mtime":"2020-03-07T21:32:18.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-07T21:32:31.039Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Linked List","level":"1.2.7","depth":2,"previous":{"title":"Functions and program structure","level":"1.2.6","depth":2,"path":"C4.md","ref":"C4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","splitter","prism","-highlight","back-to-top-button","page-toc-button","-lunr","-search","search-plus","copy-code-button","alerts","lightbox"],"pluginsConfig":{"prism":{"css":["prismjs/themes/prism-okaidia.css"],"lang":{"shell":"bash"}},"splitter":{},"fontsettings":{"theme":"white","family":"sans","size":2},"lightbox":{"jquery":true,"sameUuid":false},"page-toc-button":{},"back-to-top-button":{},"alerts":{},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{},"search-plus":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"C7.md","mtime":"2020-03-07T22:44:47.076Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-07T22:45:25.995Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
